@@ -1,0 +1,12 @@
+<app-page-panel [title]="'Welcome, ' + user().displayName">
+  <p>{{ summary }}</p>
+  <article class="profile-card">
+    <h2>{{ user().displayName }}</h2>
+    <p>{{ user().role }}</p>
+    <small>{{ user().email }}</small>
+  </article>
+  <div class="actions">
+    <a routerLink="/change-password">Change password</a>
+    <a routerLink="/login">Logout</a>
+  </div>
+</app-page-panel>

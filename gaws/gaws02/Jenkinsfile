@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Install') {
+      steps {
+        echo 'Install dependencies'
+      }
+    }
+
+    stage('Validate') {
+      steps {
+        echo 'Run lint, tests, and build'
+      }
+    }
+  }
+}

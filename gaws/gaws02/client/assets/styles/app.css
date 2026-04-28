@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+}
+
+.legacy-shell {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.legacy-panel {
+  background: #fff;
+  border: 1px solid #d9e2ec;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.legacy-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}

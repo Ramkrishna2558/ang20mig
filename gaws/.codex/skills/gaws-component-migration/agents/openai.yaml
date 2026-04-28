@@ -1,0 +1,3 @@
+display_name: GAWS Component Migration
+short_description: Migrate one AngularJS GAWS page or component into Angular.
+default_prompt: Use this skill when migrating an individual GAWS AngularJS page or component from gaws02/client into gaws02/client-ngx. Inspect source files, implement the Angular equivalent, and verify the result.

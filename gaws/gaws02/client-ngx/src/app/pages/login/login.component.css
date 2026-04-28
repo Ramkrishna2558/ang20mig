@@ -1,0 +1,14 @@
+form,
+label {
+  display: grid;
+  gap: 10px;
+}
+
+form {
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}

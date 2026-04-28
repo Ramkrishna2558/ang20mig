@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef3f8;
+  color: #1f2933;
+}
+
+a {
+  color: #0b5cad;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 4px;
+  background: #0b5cad;
+  color: #fff;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #bcccdc;
+  border-radius: 4px;
+  padding: 10px;
+}

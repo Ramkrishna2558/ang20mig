@@ -1,0 +1,15 @@
+.profile-card {
+  border: 1px solid #d9e2ec;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.profile-card h2 {
+  margin: 0 0 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}

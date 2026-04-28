@@ -1,0 +1,3 @@
+display_name: GAWS Git Workflow
+short_description: Create migration branches and standardize commits and pushes.
+default_prompt: Use this skill when preparing GAWS migration branches, commit messages, and pushes for AngularJS-to-Angular migration work.

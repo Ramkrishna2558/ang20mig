@@ -1,0 +1,6 @@
+{
+  "all": true,
+  "include": ["client/**/*.js"],
+  "exclude": ["client-ngx/**", "node_modules/**"],
+  "reporter": ["text", "html"]
+}
