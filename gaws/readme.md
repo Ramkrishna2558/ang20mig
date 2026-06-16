@@ -1,6 +1,6 @@
-# GAWS Migration Sandbox
+# PAWS Migration Sandbox
 
-This repository mimics the GAWS layout used for AngularJS to Angular migration practice.
+This repository mimics the PAWS layout used for AngularJS to Angular migration practice.
 
 - `gaws02/client` contains the legacy AngularJS-style pages and shared scripts.
 - `gaws02/client-ngx` contains the Angular migration target.
