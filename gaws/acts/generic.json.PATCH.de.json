@@ -1,0 +1,31 @@
+{
+  "_instructions": [
+    "GAWS-7103: Acts BACS-AUDDIS Migration — German (DE) translations",
+    "ADD these keys into src/assets/locales/de/generic.json",
+    "Review with a native German speaker / translation team before merging."
+  ],
+
+  "onePay": {
+    "actsBacsAuddisJobProtocol": "ACTS Auddis Datenjobprotokoll"
+  },
+
+  "grpReports": {
+    "id": "Id",
+    "actsJobType": "ACTS Auftragstyp",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "status": "Status",
+    "documentName": "Dokumentname",
+    "info": "Info",
+    "document": "Dokument",
+    "overview": "Übersicht",
+    "downloadDocument": "Dokument herunterladen",
+    "downloadOverview": "Übersichtsdokument herunterladen"
+  },
+
+  "general": {
+    "noData": "Keine Daten verfügbar",
+    "totalElements": "Elemente gesamt",
+    "loadMore": "Mehr laden"
+  }
+}

@@ -1,6 +1,6 @@
 ---
 name: gaws-component-migration
-description: Migrate one GAWS AngularJS page or component from gaws02/client into the Angular application at gaws02/client-ngx. Use when Codex is asked to analyze, plan, implement, or verify individual AngularJS-to-Angular component/page migrations in the GAWS repository.
+description: Migrate one GAWS AngularJS page or component from gaws02/client into the Angular application at gaws02/client-ngx. Use when Codex/Co-pilot/Claude is asked to analyze, plan, implement, or verify individual AngularJS-to-Angular component/page migrations in the GAWS repository.
 ---
 
 # GAWS Component Migration
@@ -22,6 +22,41 @@ description: Migrate one GAWS AngularJS page or component from gaws02/client int
 - Mirror user-visible messages exactly unless the request says to modernize copy.
 - Put shared cross-page logic in `src/app/core/services` or `src/app/shared`.
 - Keep temporary compatibility comments short and ticket-based.
+
+
+## Angular Best Practices & Standards (MANDATORY for Every Migration PR)
+
+- Keep components single-purpose; move logic to services.
+- Always use the async pipe instead of manual subscriptions.
+- Unsubscribe safely using takeUntil or higher-order RxJS operators.
+- Cache streams with shareReplay to avoid duplicate API calls.
+- Filter redundant emissions using distinctUntilChanged.
+- Route all HTTP calls through dedicated services.
+- Use interceptors for auth, and global error handling.
+- Enable ChangeDetectionStrategy.OnPush for better performance.
+- Lazy-load feature modules to reduce initial bundle size.
+- Use trackBy in *ngFor to prevent unnecessary DOM re-renders.
+- Keep templates simple; avoid heavy logic in HTML.
+- Structure routing with feature modules and guards.
+- Prefer Reactive Forms over Template-driven forms.
+- Centralize validation with reusable custom validators.
+- Secure APIs with tokens, HttpOnly cookies and clear storage on logout.
+- Avoid magic values; use constants and enums.
+- Follow consistent naming conventions across the project.
+- Automate checks with pre-commit hooks.
+- Check for vulnerabilities and report before fixing them on each PR/Story.
+- Ensure accessibility with WCAG guidelines.
+- Regularly audit dependencies and remove unused packages.
+- Use a centralized logging service; avoid console.log.
+- Improve code formatting with Prettier, clear READMEs, and clean imports.
+- Keep PRs small, reviewed, and backed by a checklist.
+- Avoid direct DOM manipulation; use Angular bindings and directives.
+- Use standalone components instead of NgModules where possible.
+- Introduce strict typing early to avoid runtime surprises.
+- When creating a feature branch, follow the proper naming convention.
+- While raising a PR, include the story number and title in the PR description.
+
+> **All above points must be considered and checked before every PR completion for AngularJS to Angular migration.**
 
 ## Reference
 

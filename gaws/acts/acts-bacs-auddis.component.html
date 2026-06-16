@@ -1,0 +1,210 @@
+<!--
+  GAWS-7103: Acts BACS-AUDDIS Migration
+  Template: Angular 20 control flow (@if / @for)
+  - Header icons disabled (read-only, no Edit/Add/Save/Close)
+  - nz-table with column resizing, sorting, filtering
+  - Document download links via service/onlyoffice/download
+  - pagination via <app-pagination-total>
+  - WCAG: aria-labels on all interactive elements
+-->
+
+<div class="acts-bacs-auddis">
+
+  <!-- Page Title -->
+  <div class="acts-bacs-auddis__header my-4">
+    <h1>{{ translations()?.onePay?.actsBacsAuddisJobProtocol }}</h1>
+  </div>
+
+  <!-- Spinner overlay -->
+  <nz-spin [nzSpinning]="isLoading()" nzSize="large">
+
+    <!-- Error State -->
+    @if (hasError()) {
+      <nz-empty
+        [nzNotFoundContent]="translations()?.title?.somethingWrong"
+        aria-live="polite"
+      />
+    }
+
+    <!-- Data Table -->
+    @if (!hasError()) {
+      <nz-table
+        #actsBacsAuddisTable
+        [nzData]="jobs()"
+        [nzFrontPagination]="false"
+        [nzShowPagination]="false"
+        [nzLoading]="isLoading()"
+        [nzScroll]="{ x: '1400px', y: '65vh' }"
+        nzSize="small"
+        class="acts-bacs-auddis__table"
+        aria-label="ACTS Auddis Data Job Protocol"
+      >
+        <!-- ── Column Headers ── -->
+        <thead>
+          <tr>
+            <th
+              nzWidth="80px"
+              [nzSortFn]="true"
+              nzColumnKey="id"
+              aria-sort="none"
+            >
+              {{ translations()?.grpReports?.id }}
+            </th>
+
+            <th
+              nzWidth="160px"
+              [nzSortFn]="true"
+              nzColumnKey="jobType"
+            >
+              {{ translations()?.grpReports?.actsJobType }}
+            </th>
+
+            <th
+              nzWidth="180px"
+              [nzSortFn]="true"
+              nzColumnKey="startDate"
+              nzSortOrder="descend"
+            >
+              {{ translations()?.grpReports?.startDate }}
+            </th>
+
+            <th
+              nzWidth="180px"
+              [nzSortFn]="true"
+              nzColumnKey="endDate"
+            >
+              {{ translations()?.grpReports?.endDate }}
+            </th>
+
+            <th
+              nzWidth="140px"
+              nzColumnKey="status"
+            >
+              {{ translations()?.grpReports?.status }}
+            </th>
+
+            <th
+              nzWidth="200px"
+              nzColumnKey="documentName"
+            >
+              {{ translations()?.grpReports?.documentName }}
+            </th>
+
+            <th
+              nzWidth="250px"
+              nzColumnKey="info"
+            >
+              {{ translations()?.grpReports?.info }}
+            </th>
+
+            <th
+              nzWidth="120px"
+              nzColumnKey="document"
+            >
+              {{ translations()?.grpReports?.document }}
+            </th>
+
+            <th
+              nzWidth="120px"
+              nzColumnKey="overview"
+            >
+              {{ translations()?.grpReports?.overview }}
+            </th>
+          </tr>
+        </thead>
+
+        <!-- ── Rows ── -->
+        <tbody>
+          @for (job of actsBacsAuddisTable.data; track trackById($index, job)) {
+            <tr>
+
+              <!-- ID -->
+              <td>{{ job.id }}</td>
+
+              <!-- Job Type -->
+              <td>{{ job.jobType }}</td>
+
+              <!-- Start Date — dd.MM.yyyy hh:mm a -->
+              <td>
+                {{ job.startDate | date: 'dd.MM.yyyy hh:mm a' }}
+              </td>
+
+              <!-- End Date -->
+              <td>
+                {{ job.endDate | date: 'dd.MM.yyyy hh:mm a' }}
+              </td>
+
+              <!-- Status -->
+              <td>
+                <nz-tag [nzColor]="getJobStatusColor(job.isSuccessful)">
+                  {{ getJobStatusLabel(job.isSuccessful) }}
+                </nz-tag>
+              </td>
+
+              <!-- Document Name -->
+              <td>{{ job.documentName }}</td>
+
+              <!-- Info -->
+              <td>{{ job.info }}</td>
+
+              <!-- Document Download (non-overview) -->
+              <td>
+                @for (doc of job.documents; track trackByEntityId($index, doc)) {
+                  @if (doc.filePath && !isOverviewDocument(doc)) {
+                    <a
+                      [href]="getDocumentDownloadUrl(doc)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="acts-bacs-auddis__download-btn"
+                      [attr.aria-label]="translations()?.grpReports?.downloadDocument"
+                    >
+                      <span nz-icon nzType="file" nzTheme="outline" aria-hidden="true"></span>
+                    </a>
+                  }
+                }
+              </td>
+
+              <!-- Overview Download -->
+              <td>
+                @for (doc of job.documents; track trackByEntityId($index, doc)) {
+                  @if (doc.filePath && isOverviewDocument(doc)) {
+                    <a
+                      [href]="getOverviewDownloadUrl(doc)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="acts-bacs-auddis__download-btn"
+                      [attr.aria-label]="translations()?.grpReports?.downloadOverview"
+                    >
+                      <span nz-icon nzType="file" nzTheme="outline" aria-hidden="true"></span>
+                    </a>
+                  }
+                }
+              </td>
+
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="9">
+                <nz-empty
+                  [nzNotFoundContent]="translations()?.general?.noData"
+                  aria-live="polite"
+                />
+              </td>
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+    }
+
+  </nz-spin>
+
+  <!-- Pagination / Load More -->
+  <app-pagination-total
+    [totalElements]="totalElements()"
+    [buttonDisabled]="isLoadMoreDisabled() || isLoading()"
+    [labelTotalElements]="translations()?.general?.totalElements ?? 'Total Elements'"
+    [labelLoadMore]="translations()?.general?.loadMore ?? 'Load More'"
+    (loadMoreData)="onLoadMore()"
+  />
+
+</div>

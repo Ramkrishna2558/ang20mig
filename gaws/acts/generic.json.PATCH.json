@@ -1,0 +1,35 @@
+{
+  "_instructions": [
+    "GAWS-7103: Acts BACS-AUDDIS Migration",
+    "ADD the following keys into src/assets/locales/en/generic.json",
+    "AND translate equivalents into src/assets/locales/de/generic.json",
+    "Do NOT replace existing keys — only add the missing ones.",
+    "Keys map from legacy: this.$i18next.t('grpReports.X') → translations?.grpReports?.X",
+    "Header key: 'onePay.actsBacsAuddisJobProtocol' → translations?.onePay?.actsBacsAuddisJobProtocol"
+  ],
+
+  "onePay": {
+    "actsBacsAuddisJobProtocol": "ACTS Auddis Data Job Protocol"
+  },
+
+  "grpReports": {
+    "id": "Id",
+    "actsJobType": "ACTS Job Type",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "status": "Status",
+    "documentName": "Document Name",
+    "info": "Info",
+    "document": "Document",
+    "overview": "Overview",
+    "downloadDocument": "Download document",
+    "downloadOverview": "Download overview document"
+  },
+
+  "general": {
+    "_existing_note": "Keys below may already exist — only add if missing",
+    "noData": "No data available",
+    "totalElements": "Total Elements",
+    "loadMore": "Load More"
+  }
+}

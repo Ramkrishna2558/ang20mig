@@ -1,0 +1,34 @@
+﻿{
+    "command":  "npm run migrate page employee-management",
+    "kind":  "page",
+    "name":  "employee-management",
+    "className":  "EmployeeManagementComponent",
+    "targetRoot":  "gaws\\gaws02\\client-ngx\\src\\app\\pages\\employee-management",
+    "promptPath":  "gaws\\gaws02\\client-ngx\\migration-log\\20260428-162505-employee-management-copilot-prompt.md",
+    "sourceFiles":  [
+                        "gaws\\gaws02\\client\\components\\employee-management.js"
+                    ],
+    "contextFiles":  [
+                         "MIGRATION_AGENT.md",
+                         "MIGRATION_INSTRUCTIONS.md",
+                         "FRAMEWORK_OVERVIEW.md",
+                         "gaws\\.agents\\angularjs-analyzer.md",
+                         "gaws\\.agents\\migration-planner.md",
+                         "gaws\\.agents\\angular-implementer.md",
+                         "gaws\\.agents\\migration-reviewer.md",
+                         "gaws\\.codex\\skills\\gaws-component-migration\\SKILL.md",
+                         "gaws\\.codex\\skills\\gaws-component-migration\\references\\migration-checklist.md",
+                         "gaws\\gaws02\\client\\init.js",
+                         "gaws\\gaws02\\client\\index.html",
+                         "gaws\\gaws02\\client-ngx\\src\\app\\app.routes.ts",
+                         "gaws\\gaws02\\client-ngx\\src\\app\\app.config.ts",
+                         "gaws\\gaws02\\client-ngx\\package.json",
+                         "gaws\\gaws02\\client-ngx\\angular.json",
+                         "gaws\\gaws02\\backend\\server.js",
+                         "gaws\\gaws02\\client\\components\\employee-management.js"
+                     ],
+    "warnings":  [
+                     "No legacy HTML template was found for \u0027employee-management\u0027. Check route templateUrl and source tree before claiming migration parity."
+                 ],
+    "createdAt":  "2026-04-28T16:25:05.5466993+05:30"
+}
